@@ -319,6 +319,8 @@
     box-shadow: var(--shadow);
     animation: fadeIn 0.25s ease;
   }
+  
+  .item-empty { background: #fdecea; border-color: #e8a0a0; }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(5px); }
@@ -894,7 +896,7 @@ window.render = function() {
     gItems.forEach(item => {
       const loc     = locations.find(l=>l.id===item.locId);
       const catInfo = CATEGORIES[item.category]||{label:item.category,icon:'📦'};
-      html += `<div class="item-card">
+      html += `<div class="item-card ${item.qty == 0 ? 'item-empty' : ''}">
         <div class="item-info">
           <div class="item-name">${item.name}</div>
           ${item.note ? `<div class="item-note">${item.note}</div>` : ''}
